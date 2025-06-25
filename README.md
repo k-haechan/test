@@ -4,15 +4,16 @@
 
 ```mermaid
 graph TD
-  subgraph "VPC"
-    EC2[EC2 (API 서버)]
-    RDS[(RDS DB)]
-    S3[(S3 버킷)]
+  subgraph VPC
+    EC2["EC2 - API 서버"]
+    RDS[(RDS - DB)]
+    S3[(S3 - 버킷)]
   end
-  CF[CloudFront CDN]
-  Route53[Route53 (DNS)]
-  User[사용자]
-  
+
+  CF["CloudFront - CDN"]
+  Route53["Route53 - DNS"]
+  User["사용자"]
+
   User -->|도메인 요청| Route53
   Route53 -->|api.<project>.your-domain.com| EC2
   Route53 -->|static.<project>.your-domain.com| CF
